@@ -416,14 +416,6 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    #search-box-container {
-        position: absolute;
-        bottom: 4vh; /* 10% from bottom */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%; /* Slightly smaller width on mobile */
-        z-index: 100;
-    }
 
     .clock-container {
         top: 2vh;

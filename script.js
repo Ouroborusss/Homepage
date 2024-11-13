@@ -102,6 +102,12 @@ function displaySuggestions(data) {
     }
 
     suggestionsContainer.innerHTML = '';
+    
+    // Reverse the suggestions array for mobile view
+    if (window.innerWidth <= 768) {
+        data = data.reverse();
+    }
+
     data.forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'suggestion-item';
@@ -382,4 +388,11 @@ document.addEventListener('keydown', function(e) {
 
     // Focus the search input and trigger the input
     searchInput.focus();
+});
+
+// Add touch event handling
+document.addEventListener('touchstart', function(e) {
+    if (!searchForm.contains(e.target)) {
+        suggestionsContainer.style.display = 'none';
+    }
 }); 

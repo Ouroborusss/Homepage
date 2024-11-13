@@ -31,7 +31,8 @@ body {
 }
 
 .search-container {
-    position: relative;
+    position: absolute;
+    bottom: 50vh;
     width: 100%;
     max-width: 584px;
     margin: 0 20px;
@@ -412,4 +413,70 @@ body {
 .calendar-link:hover,
 .weather-link:hover {
     text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    #search-box-container {
+        position: absolute;
+        bottom: 10vh; /* 10% from bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%; /* Slightly smaller width on mobile */
+        z-index: 100;
+    }
+
+    .clock-container {
+        top: 2vh;
+    }
+
+    #suggestions {
+        position: absolute;
+        bottom: 100%; /* Position above the search box */
+        left: 0;
+        right: 0;
+        margin-bottom: 10px; /* Space between search box and suggestions */
+        border-radius: 12px;
+        background: var(--search-box-color);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        max-height: 50vh; /* Maximum height of 50% of viewport */
+        overflow-y: auto;
+        
+    }
+
+    /* Reverse the suggestion items to show newest at bottom */
+    #suggestions {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    /* Adjust suggestion items for mobile */
+    .suggestion-item {
+        padding: 12px 15px; /* Larger touch targets */
+        font-size: 16px;
+    }
+
+    /* Adjust the search box size for mobile */
+    .search-box {
+        height: 50px; /* Larger touch target */
+        font-size: 16px; /* Better for mobile */
+    }
+
+    /* Adjust the clear button for mobile */
+    .clear-button {
+        right: 15px;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+    }
+}
+
+/* Add smooth scrolling for suggestions */
+#suggestions {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+#suggestions::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }

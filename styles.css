@@ -1,0 +1,415 @@
+:root {
+    --main-color: #626d54;
+    --secondary-color: #2f3723;
+    --search-box-color: #e2e6dab5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ), url('https://utfs.io/f/BaiAxZUPkwItYisN5z86qrOhUmdcywl8fIo3ZzgvitGCbx1E');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 584px;
+    margin: 0 20px;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    color: var(--main-color);
+}
+
+.search-box.has-content {
+    background: var(--search-box-color);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.search-box:hover {
+    background: var(--search-box-color);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-box input {
+    width: 100%;
+    height: 48px;
+    padding: 0 50px;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--main-color);
+    font-size: 18px;
+}
+
+.clear-button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: var(--main-color);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    padding: 0;
+    font-size: 16px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.clear-button:hover {
+    color: var(--secondary-color);
+}
+
+.search-box:focus-within .clear-button.visible {
+    opacity: 0.7;
+    pointer-events: auto;
+}
+
+.suggestions {
+    background: var(--search-box-color);
+    border-radius: 0.5rem;
+    margin-top: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+}
+
+.suggestion-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+    color: var(--secondary-color);
+}
+
+.suggestion-item:hover {
+    background: rgba(0, 0, 0, 0.075);
+}
+
+.suggestion-item i {
+    color: var(--main-color);
+    font-size: 14px;
+}
+
+.suggestion-item.selected {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+/* Optional: Add a subtle highlight color when selected */
+.suggestion-item.selected span {
+    color: var(--secondary-color);
+}
+
+/* Hide placeholder by default */
+.search-box input::placeholder {
+    color: transparent;
+    transition: color 0.3s ease;
+}
+
+/* Show placeholder on hover */
+.search-box:hover input::placeholder {
+    color: var(--main-color);
+    opacity: 0.8;
+}
+
+/* Show placeholder when input is focused */
+.search-box input:focus::placeholder {
+    color: var(--main-color);
+    opacity: 0.8;
+}
+
+/* Keep placeholder visible if there's content */
+.search-box.has-content input::placeholder {
+    color: var(--main-color);
+}
+
+@media (max-width: 600px) {
+    .search-container {
+        max-width: 90%;
+    }
+}
+
+.clock-container {
+    position: fixed;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.clock-container:hover {
+    background: var(--search-box-color);
+    box-shadow: 0 0 1rem var(--secondary-color);
+}
+
+.clock-col {
+    text-align: center;
+}
+
+.clock-timer {
+    font-size: 6rem;
+    font-weight: 500;
+    color: var(--main-color);
+    margin: 0;
+}
+
+.clock-day {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+.weather-info {
+    font-size: 30px;
+    margin-top: 5px;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.weather-info i {
+    color: var(--main-color);
+}
+
+.sidebar {
+    position: fixed;
+    left: -300px; /* Start hidden */
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar.open {
+    left: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-toggle {
+    position: absolute;
+    right: -40px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background: var(--search-box-color);
+}
+
+.bookmark-tree {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.import-button {
+    width: calc(100% - 40px);
+    padding: 12px;
+    margin: 20px;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 12px;
+    color: var(--main-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.import-button:hover {
+    background: var(--search-box-color);
+    box-shadow: 0 0 1rem var(--secondary-color);
+}
+
+.bookmark-folder {
+    margin: 5px 0;
+    padding-left: 15px;
+}
+
+.bookmark-folder > .folder-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 1rem;
+    color: var(--main-color);
+}
+
+.bookmark-folder > .folder-name:hover {
+    background: var(--search-box-color);
+}
+
+.bookmark-folder > .folder-content {
+    display: none;
+    margin-left: 10px;
+}
+
+.bookmark-folder.open > .folder-content {
+    display: block;
+}
+
+.bookmark-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    margin: 2px 0;
+    border-radius: 4px;
+    color: var(--main-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.bookmark-item:hover {
+    background: var(--search-box-color);
+}
+
+.folder-icon {
+    transition: transform 0.3s ease;
+}
+
+.bookmark-folder.open > .folder-name .folder-icon {
+    transform: rotate(90deg);
+}
+
+/* Webkit browsers (Chrome, Safari, newer Edge) */
+.bookmark-tree::-webkit-scrollbar {
+    width: 8px;
+}
+
+.bookmark-tree::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin: 4px;
+}
+
+.bookmark-tree::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.bookmark-tree::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Firefox */
+.bookmark-tree {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.1);
+}
+
+.calendar-link, .weather-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: block; /* Ensures proper block formatting */
+}
+
+.calendar-link:hover .clock-day,
+.weather-link:hover .weather-info {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* Remove any potential underlines from child elements */
+.calendar-link *, .weather-link * {
+    text-decoration: none;
+}
+
+/* Make sure these don't interfere with existing styles */
+.clock-day, .weather-info {
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Prevent any underlines on hover */
+.calendar-link:hover,
+.weather-link:hover {
+    text-decoration: none;
+}

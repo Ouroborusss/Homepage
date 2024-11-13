@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Clock -->
+    <div class="clock-container">
+        <div class="clock-col">
+            <a href="https://calendar.google.com/calendar" target="_blank" class="calendar-link">
+                <p class="clock-day clock-timer"></p>
+            </a>
+            <p class="clock-time clock-timer"></p>
+            <a href="https://weather.com" target="_blank" class="weather-link">
+                <p class="weather-info clock-timer"></p>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Search -->
+    <div class="container">
+        <div class="search-container">
+            <form action="https://duckduckgo.com/" method="get" id="search-form">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="q" id="search-input" placeholder="Search DuckDuckGo..." autocomplete="off">
+                    <button type="button" class="clear-button" id="clear-button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="suggestions" id="suggestions"></div>
+            </form>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-toggle" id="sidebar-toggle">
+            <i class="fa-solid fa-bookmark"></i>
+        </div>
+        <div class="bookmark-tree" id="bookmark-tree">
+            <!-- Bookmarks will be inserted here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

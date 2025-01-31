@@ -13,8 +13,8 @@
 body {
     min-height: 100vh;
     background-image: linear-gradient(
-        rgba(0, 0, 0, 0.9),
-        rgba(0, 0, 0, 0.1)
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.3)
     ), url('https://utfs.io/f/BaiAxZUPkwItYisN5z86qrOhUmdcywl8fIo3ZzgvitGCbx1E');
     background-size: cover;
     background-position: center;
